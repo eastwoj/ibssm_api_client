@@ -5,7 +5,7 @@ module IbssmApiClient
   class Base
     
     def initialize
-      @@response_handler = IbssmApi::ResponseHandler.new
+      @@response_handler = IbssmApiClient::ResponseHandler.new
     end
     
     def base_url
