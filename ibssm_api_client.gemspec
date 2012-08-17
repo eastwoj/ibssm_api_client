@@ -3,8 +3,8 @@ require File.expand_path('../lib/ibssm_api_client/version', __FILE__)
 
 Gem::Specification.new do |gem|
   gem.authors       = ["Jason Eastwood"]
-  gem.email         = ["jeastwood@gmail.com"]
-  gem.description   = %q{TODO: Write a gem description}
+  gem.email         = ["jasone@ibethel.org"]
+  gem.description   = %q{A library wrapping ibssm.org's private API}
   gem.summary       = %q{TODO: Write a gem summary}
   gem.homepage      = ""
 
