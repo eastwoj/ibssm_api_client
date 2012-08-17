@@ -1,4 +1,4 @@
-module IbssmApi
+module IbssmApiClient
   class Authenticate < Base
     
     # Communicates with ibssm.org to authenticate the user. If authentication is
