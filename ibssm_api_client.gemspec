@@ -5,7 +5,7 @@ Gem::Specification.new do |gem|
   gem.authors       = ["Jason Eastwood"]
   gem.email         = ["jasone@ibethel.org"]
   gem.description   = %q{A library wrapping ibssm.org's private API}
-  gem.summary       = %q{TODO: Write a gem summary}
+  gem.summary       = %q{A temporary gem summary}
   gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($\)
