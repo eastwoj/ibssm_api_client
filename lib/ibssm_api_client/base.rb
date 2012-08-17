@@ -1,4 +1,3 @@
-require "ibssm_api_client/version"
 require "net/http"
 require "uri"
 
