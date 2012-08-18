@@ -15,5 +15,5 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = IbssmApiClient::VERSION
   
-  #gem.add_development_dependency "rpsec"
+  #gem.add_development_dependency "rpsec-rails"
 end

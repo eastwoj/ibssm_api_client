@@ -1,0 +1,3 @@
+class IbssmApiError < StandardError
+
+end

@@ -1,0 +1,4 @@
+class IbssmAuthenticationError < StandardError
+
+end
+

@@ -1,0 +1,4 @@
+class IbssmApiConnectionError < StandardError
+
+end
+
