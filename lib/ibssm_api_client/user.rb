@@ -3,7 +3,7 @@ module IbssmApiClient
     
     def create_staff(staff)
       path = "users/create"
-      role_api = IbssmRoles.new
+      role_api = Role.new
       roles = role_api.build_role_json(staff.user.roles)
       response = post_data(path,{'coeus_user_id' => staff.user.id,
                                       'roles' => roles,

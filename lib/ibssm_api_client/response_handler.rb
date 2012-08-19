@@ -19,7 +19,6 @@ module IbssmApiClient
     end    
     
     def debug_response(response)
-      puts "iBSSM API authentication RESPONSE"
       puts "code: #{response.code}"
       puts "cache control: #{response["cache-control"]}"
       puts "content type: #{response["Content-Type"]}"
