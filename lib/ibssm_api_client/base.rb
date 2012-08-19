@@ -50,6 +50,15 @@ module IbssmApiClient
 
           req.add_field("X-Request-Token", @@token)
           req.set_form_data(data)
+          
+          if IBSSM_API_CONFIG["debug"]
+            puts "API POST: #{url}"
+            puts "token: #{@@token}"
+            puts "data:"
+            data.each do |k,v|
+              puts "key: #{k}  value: #{v}"
+            end
+          end
 
           res = Net::HTTP.new(url.host, url.port).start do |http|
             http.request(req)
@@ -79,6 +88,7 @@ module IbssmApiClient
         req = Net::HTTP::Get.new(url.path + params)
         req.add_field("X-Request-Token", @@token)
         Rails.logger.info "API REQUEST: #{url + params }"
+        puts "API REQUEST: #{url + params }" if IBSSM_API_CONFIG["debug"]
         res = Net::HTTP.new(url.host, url.port).start do |http|
           http.request(req)
         end

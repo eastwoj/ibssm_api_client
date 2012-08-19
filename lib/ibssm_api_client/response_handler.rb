@@ -19,6 +19,7 @@ module IbssmApiClient
     end    
     
     def debug_response(response)
+      puts "API RESPONSE:"
       puts "code: #{response.code}"
       puts "cache control: #{response["cache-control"]}"
       puts "content type: #{response["Content-Type"]}"
