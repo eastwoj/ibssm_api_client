@@ -19,6 +19,11 @@ module IbssmApiClient
     end    
     
     def debug_response(response)
+      if response.blank? 
+        puts "API RESPONSE WAS BLANK"
+        return
+      end
+      
       puts "API RESPONSE:"
       puts "code: #{response.code}"
       puts "cache control: #{response["cache-control"]}"
