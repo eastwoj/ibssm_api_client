@@ -2,8 +2,6 @@ module IbssmApiClient
   class Homework < Base
     
     # Returns a summary of a student's homework.
-    # id: the student's id
-    # token: the student's authentication token
     def summary(student_profile_id)
       path = "homework/index"
       return get_data(path,'?student_profile_id=' + student_profile_id.to_s)

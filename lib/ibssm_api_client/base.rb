@@ -31,15 +31,15 @@ module IbssmApiClient
     end
     
     # A short summary about the student profile
-    def profile_summary(id)
+    def profile_summary(student_profile_id)
       path = "students/profileSummary"
-      return get_data(path,'?student_profile_id=' + id.to_s)
+      return get_data(path,'?student_profile_id=' + student_profile_id.to_s)
     end
   
     # A detailed version of the student's profile
-    def profile(id)
+    def profile(student_profile_id)
       path = "students/profile"
-      return get_data(path,'?student_profile_id=' + id.to_s)
+      return get_data(path,'?student_profile_id=' + student_profile_id.to_s)
     end
     
     def post_data(path,data)
