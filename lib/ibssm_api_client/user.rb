@@ -7,8 +7,8 @@ module IbssmApiClient
       roles = role_api.build_role_json(staff.user.roles)
       response = post_data(path,{'coeus_user_id' => staff.user.id,
                                       'roles' => roles,
-                                      'first_name' => 'name',
-                                      'last_name' => 'last',
+                                      'first_name' => staff.first_name,
+                                      'last_name' => staff.last_name,
                                       'email' => staff.user.email,
                                       'username' => staff.user.email,
                                       'type' => staff.class.name.downcase
