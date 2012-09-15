@@ -1,4 +1,6 @@
 require "ibssm_api_client/version"
+require "rails"
+require "ibssm_api_client/ibssm_api_railtie"
 require "ibssm_api_client/base"
 require "ibssm_api_client/authenticate"
 require "ibssm_api_client/response_handler"
@@ -17,9 +19,12 @@ require "ibssm_api_client/exceptions/ibssm_not_found_error"
 
 
 module IbssmApiClient
-  def self.hi
-    puts "hello :)"
-  end
+  
+  mattr_accessor :base_url
+  mattr_accessor :debug
+  mattr_accessor :username
+  mattr_accessor :password
+  
 end
 
 

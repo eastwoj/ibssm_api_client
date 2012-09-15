@@ -9,7 +9,7 @@ module IbssmApiClient
     end
     
     def base_url
-      IBSSM_API_CONFIG["base_ibssm_api_url"] + IBSSM_API_CONFIG["ibssm_services"]
+      IbssmApiClient.base_url
     end
     
     def set_token(token)
@@ -43,6 +43,10 @@ module IbssmApiClient
     end
     
     def post_data(path,data)
+      
+       if @@token.blank?  
+         raise IbssmAuthenticationError.new("No authentication token found.")
+       end
       
        begin
           url = URI.parse(base_url + path)
@@ -88,7 +92,7 @@ module IbssmApiClient
         req = Net::HTTP::Get.new(url.path + params)
         req.add_field("X-Request-Token", @@token)
         Rails.logger.info "API REQUEST: #{url + params }"
-        puts "API REQUEST: #{url + params }" if IBSSM_API_CONFIG["debug"]
+        puts "API REQUEST: #{url + params }" if IbssmApiClient.debug
         res = Net::HTTP.new(url.host, url.port).start do |http|
           http.request(req)
         end

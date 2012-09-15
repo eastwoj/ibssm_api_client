@@ -2,7 +2,7 @@ module IbssmApiClient
   class ResponseHandler 
     
     def handle(response)
-      debug_response(response) if IBSSM_API_CONFIG["debug"]
+      debug_response(response) if IbssmApiClient.debug
       body = ActiveSupport::JSON.decode(response.body)
       
       if response.code == '500'

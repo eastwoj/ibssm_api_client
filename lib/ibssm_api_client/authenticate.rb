@@ -7,8 +7,8 @@ module IbssmApiClient
     # TODO: refactor connection exception blocks
     def authenticate
       begin
-        user = IBSSM_API_CONFIG["api_username"]
-        password = IBSSM_API_CONFIG["api_password"]
+        user = IbssmApiClient.username
+        password = IbssmApiClient.password
         assert_credentials(user,password)
         
         uri = URI.parse(base_url+'auth/SignIn')
