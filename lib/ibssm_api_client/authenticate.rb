@@ -18,19 +18,19 @@ module IbssmApiClient
         request.set_form_data({"username" => user, "password" => password})
         response = http.request(request)
       rescue Errno::ECONNREFUSED
-        Rails.logger.info "Connection to IBSSM API refused"
+        IbssmApiClient.logger.info "Connection to IBSSM API refused"
         raise IbssmApiError
       rescue Timeout::Error
-        Rails.logger.info "Connection to IBSSM API timed out"
+        IbssmApiClient.logger.info "Connection to IBSSM API timed out"
         raise IbssmApiError
       rescue Net::ProtocolError
-        Rails.logger.info "Net::Protocol Error with connection to IBSSM API (1)"
+        IbssmApiClient.logger.info "Net::Protocol Error with connection to IBSSM API (1)"
         raise IbssmApiError
       rescue IOError
-        Rails.logger.info "IOError with connection to IBSSM API (2)"
+        IbssmApiClient.logger.info "IOError with connection to IBSSM API (2)"
         raise IbssmApiError
       rescue Net::HTTPBadResponse
-        Rails.logger.info "Net::HttpBadResponse with connection to IBSSM API (3)"
+        IbssmApiClient.logger.info "Net::HttpBadResponse with connection to IBSSM API (3)"
         raise IbssmApiError
       end      
       debug_response(response)

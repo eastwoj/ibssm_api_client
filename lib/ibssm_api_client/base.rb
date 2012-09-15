@@ -56,11 +56,11 @@ module IbssmApiClient
           req.set_form_data(data)
           
           if IbssmApiClient.debug
-            logger.debug "IbssmApiClient>> POST: #{url}"
-            logger.debug "token: #{@@token}"
-            logger.debug "data:"
+            IbssmApiClient.logger.debug "IbssmApiClient>> POST: #{url}"
+            IbssmApiClient.logger.debug "token: #{@@token}"
+            IbssmApiClient.logger.debug "data:"
             data.each do |k,v|
-              logger.debug "key: #{k}  value: #{v}"
+              IbssmApiClient.logger.debug "key: #{k}  value: #{v}"
             end
           end
 
@@ -71,16 +71,16 @@ module IbssmApiClient
         @@response_handler.handle(res)
 
         rescue Errno::ECONNREFUSED
-          Rails.logger.info "Connection to IBSSM API refused"
+          IbssmApiClient.logger.info "Connection to IBSSM API refused"
           raise IbssmApiConnectionError
         rescue Timeout::Error
-          Rails.logger.info "Connection to IBSSM API timed out"
+          IbssmApiClient.logger.info "Connection to IBSSM API timed out"
           raise IbssmApiConnectionError
         rescue Net::ProtocolError
-          Rails.logger.info "Protocol Error with connection to IBSSM API"
+          IbssmApiClient.logger.info "Protocol Error with connection to IBSSM API"
           raise IbssmApiConnectionError
         rescue IOError
-          Rails.logger.info "Protocol Error with connection to IBSSM API"
+          IbssmApiClient.logger.info "Protocol Error with connection to IBSSM API"
           raise IbssmApiConnectionError
         end
       
@@ -91,7 +91,7 @@ module IbssmApiClient
         url = URI.parse(base_url + path)
         req = Net::HTTP::Get.new(url.path + params)
         req.add_field("X-Request-Token", @@token)
-        logger.debug "IbssmApiClient>> GET: #{url + params }" if IbssmApiClient.debug
+        IbssmApiClient.logger.debug "IbssmApiClient>> GET: #{url + params }" if IbssmApiClient.debug
         res = Net::HTTP.new(url.host, url.port).start do |http|
           http.request(req)
         end
@@ -100,19 +100,19 @@ module IbssmApiClient
         json = ActiveSupport::JSON.decode(res.body)
         
       rescue Errno::ECONNREFUSED
-        Rails.logger.info "Connection to IBSSM API refused"
+        IbssmApiClient.logger.info "Connection to IBSSM API refused"
         raise IbssmApiConnectionError
       rescue Timeout::Error
-        Rails.logger.info "Connection to IBSSM API timed out"
+        IbssmApiClient.logger.info "Connection to IBSSM API timed out"
         raise IbssmApiConnectionError
       rescue Net::ProtocolError
-        Rails.logger.info "Protocol Error with connection to IBSSM API"
+        IbssmApiClient.logger.info "Protocol Error with connection to IBSSM API"
         raise IbssmApiConnectionError
       rescue Net::HTTPInternalServerError
-        Rails.logger.info "Internal server error with connection to IBSSM API"
+        IbssmApiClient.logger.info "Internal server error with connection to IBSSM API"
         rails IbssmApiConnectionError
       rescue IOError
-        Rails.logger.info "Protocol Error with connection to IBSSM API"
+        IbssmApiClient.logger.info "Protocol Error with connection to IBSSM API"
         raise IbssmApiConnectionError
       end 
       json
