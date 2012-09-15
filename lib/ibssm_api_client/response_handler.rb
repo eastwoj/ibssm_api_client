@@ -20,16 +20,16 @@ module IbssmApiClient
     
     def debug_response(response)
       if response.blank? 
-        puts "API RESPONSE WAS BLANK"
+        logger.debug "IbssmApiClient>> NO response."
         return
       end
       
-      puts "API RESPONSE:"
-      puts "code: #{response.code}"
-      puts "cache control: #{response["cache-control"]}"
-      puts "content type: #{response["Content-Type"]}"
-      puts "token: #{response['X-Response-Token']}"    
-      puts "body: #{response.body}"
+      logger.debug "IbssmApiClient>> response:"
+      logger.debug "code: #{response.code}"
+      logger.debug "cache control: #{response["cache-control"]}"
+      logger.debug "content type: #{response["Content-Type"]}"
+      logger.debug "token: #{response['X-Response-Token']}"    
+      logger.debug "body: #{response.body}"
     end
     
   end

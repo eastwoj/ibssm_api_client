@@ -55,12 +55,12 @@ module IbssmApiClient
           req.add_field("X-Request-Token", @@token)
           req.set_form_data(data)
           
-          if IBSSM_API_CONFIG["debug"]
-            puts "API POST: #{url}"
-            puts "token: #{@@token}"
-            puts "data:"
+          if IbssmApiClient.debug
+            logger.debug "IbssmApiClient>> POST: #{url}"
+            logger.debug "token: #{@@token}"
+            logger.debug "data:"
             data.each do |k,v|
-              puts "key: #{k}  value: #{v}"
+              logger.debug "key: #{k}  value: #{v}"
             end
           end
 
@@ -91,8 +91,7 @@ module IbssmApiClient
         url = URI.parse(base_url + path)
         req = Net::HTTP::Get.new(url.path + params)
         req.add_field("X-Request-Token", @@token)
-        Rails.logger.info "API REQUEST: #{url + params }"
-        puts "API REQUEST: #{url + params }" if IbssmApiClient.debug
+        logger.debug "IbssmApiClient>> GET: #{url + params }" if IbssmApiClient.debug
         res = Net::HTTP.new(url.host, url.port).start do |http|
           http.request(req)
         end
@@ -116,9 +115,7 @@ module IbssmApiClient
         Rails.logger.info "Protocol Error with connection to IBSSM API"
         raise IbssmApiConnectionError
       end 
-      Rails.logger.info "JSON RETURN: #{json}"
-      puts "JSON RETURN: #{json}"
-      return json
+      json
     end
   end  
 end
