@@ -24,12 +24,12 @@ module IbssmApiClient
         return
       end
       
-      IbssmApiClient.debug "IbssmApiClient>> response:"
-      IbssmApiClient.debug "code: #{response.code}"
-      IbssmApiClient.debug "cache control: #{response["cache-control"]}"
-      IbssmApiClient.debug "content type: #{response["Content-Type"]}"
-      IbssmApiClient.debug "token: #{response['X-Response-Token']}"    
-      IbssmApiClient.debug "body: #{response.body}"
+      IbssmApiClient.logger.debug "IbssmApiClient>> response:"
+      IbssmApiClient.logger.debug "code: #{response.code}"
+      IbssmApiClient.logger.debug "cache control: #{response["cache-control"]}"
+      IbssmApiClient.logger.debug "content type: #{response["Content-Type"]}"
+      IbssmApiClient.logger.debug "token: #{response['X-Response-Token']}"    
+      IbssmApiClient.logger.debug "body: #{response.body}"
     end
     
   end
