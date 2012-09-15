@@ -24,6 +24,7 @@ module IbssmApiClient
   mattr_accessor :debug
   mattr_accessor :username
   mattr_accessor :password
+  mattr_accessor :logger
   
 end
 
