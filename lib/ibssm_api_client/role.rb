@@ -8,13 +8,15 @@ module IbssmApiClient
       # post_data(path,token,{'coeus_user_id' => user.id, 'roles' => payload})      
     # end
     
-    def update_all_roles(user)
+    def update_all_roles(token,user)
       path = "roles/update"
       payload = build_role_json(user.roles)
-      response = post_data(path,{'coeus_user_id' => user.id, 'roles' => payload})
+      response = post_data(token,path,{'coeus_user_id' => user.id, 'roles' => payload})
       debug_response(response)
       response      
     end
+    
+    private
       
     def build_role_json(roles)
       bucket = Array.new

@@ -12,39 +12,35 @@ module IbssmApiClient
       IbssmApiClient.base_url
     end
     
-    def set_token(token)
-      @@token = token
-    end
-    
     def debug_response(response)
       @@response_handler.debug_response(response)
     end
     
-    def exec_report
+    def exec_report(token)
       path = 'exec-report';
-      return get_data(path,'')
+      return get_data(token,path,'')
     end
     
-    def find_all
+    def find_all(token)
       path = "list-all"
-      return get_data(path,'')
+      return get_data(token,path,'')
     end
     
     # A short summary about the student profile
-    def profile_summary(student_profile_id)
+    def profile_summary(token,student_profile_id)
       path = "students/profileSummary"
-      return get_data(path,'?student_profile_id=' + student_profile_id.to_s)
+      return get_data(token,path,'?student_profile_id=' + student_profile_id.to_s)
     end
   
     # A detailed version of the student's profile
-    def profile(student_profile_id)
+    def profile(token,student_profile_id)
       path = "students/profile"
-      return get_data(path,'?student_profile_id=' + student_profile_id.to_s)
+      return get_data(token,path,'?student_profile_id=' + student_profile_id.to_s)
     end
     
-    def post_data(path,data)
+    def post_data(token,path,data)
       
-       if @@token.blank?  
+       if token.blank?  
          raise IbssmAuthenticationError.new("No authentication token found.")
        end
       
@@ -52,17 +48,16 @@ module IbssmApiClient
           url = URI.parse(base_url + path)
           req = Net::HTTP::Post.new(url.path)
 
-          req.add_field("X-Request-Token", @@token)
+          req.add_field("X-Request-Token", token)
           req.set_form_data(data)
           
-          if IbssmApiClient.debug
+
             IbssmApiClient.logger.debug "IbssmApiClient>> POST: #{url}"
-            IbssmApiClient.logger.debug "token: #{@@token}"
+            IbssmApiClient.logger.debug "token: #{token}"
             IbssmApiClient.logger.debug "data:"
             data.each do |k,v|
               IbssmApiClient.logger.debug "key: #{k}  value: #{v}"
             end
-          end
 
           res = Net::HTTP.new(url.host, url.port).start do |http|
             http.request(req)
@@ -86,12 +81,12 @@ module IbssmApiClient
       
     end
     
-    def get_data(path,params)
+    def get_data(token,path,params)
       begin
         url = URI.parse(base_url + path)
         req = Net::HTTP::Get.new(url.path + params)
-        req.add_field("X-Request-Token", @@token)
-        IbssmApiClient.logger.debug "IbssmApiClient>> GET: #{url + params }" if IbssmApiClient.debug
+        req.add_field("X-Request-Token", token)
+        IbssmApiClient.logger.debug "IbssmApiClient>> GET: #{url + params }" 
         res = Net::HTTP.new(url.host, url.port).start do |http|
           http.request(req)
         end

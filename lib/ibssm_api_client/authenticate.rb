@@ -34,15 +34,14 @@ module IbssmApiClient
         raise IbssmApiError
       end      
       debug_response(response)
-      set_token(response['X-Response-Token'])
       return response['X-Response-Token']
     end
     
     # Returns information about the authenticated user.
     # token: the student's authentication token
-    def user_information
+    def user_information(token)
       path = 'auth/UserInformation'
-      return get_data(path,@@token,'?token=' + @@token.to_s)
+      return get_data(token, path, nil)
     end
     
     private
