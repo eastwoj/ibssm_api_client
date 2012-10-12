@@ -16,8 +16,6 @@ module IbssmApiClient
       response      
     end
     
-    private
-      
     def build_role_json(roles)
       bucket = Array.new
       roles.each do |role|
