@@ -1,7 +1,7 @@
 module IbssmApiClient
   class User < Base
     
-    def create_staff(token,staff)
+    def create_staff(token,staff,username)
       path = "users/create"
       role_api = Role.new
       roles = role_api.build_role_json(staff.user.roles)
@@ -12,7 +12,8 @@ module IbssmApiClient
         'last_name' => staff.last_name,
         'email' => staff.user.email,
         'username' => staff.user.email,
-        'type' => staff.class.name.downcase
+        'type' => staff.class.name.downcase,
+        'username' => username
       })
       debug_response(response)
       response         
