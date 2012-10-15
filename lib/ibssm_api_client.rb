@@ -25,6 +25,7 @@ module IbssmApiClient
   mattr_accessor :username
   mattr_accessor :password
   mattr_accessor :logger
+  mattr_accessor :auth_token
   
 end
 
