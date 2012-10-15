@@ -1,21 +1,6 @@
 module IbssmApiClient
   class Role < Base
 
-    # def update_role(user,role_name,token)
-      # path = "roles/update"
-      # role_name = ibssm_role_for_coeus_role(role_name)
-      # payload = build_role_json([role_name])
-      # post_data(path,token,{'coeus_user_id' => user.id, 'roles' => payload})      
-    # end
-    
-    def update_role(token,role_name,user_id)
-      path = roles/update
-      payload = ibssm_role_for_coeus_role(role_name).to_json
-      response = post_data(token,path,{'coeus_user_id' => user_id, 'roles' => payload})
-      debug_response(response)
-      response   
-    end
-    
     def update_all_roles(token,user)
       path = "roles/update"
       payload = build_role_json(user.roles)
