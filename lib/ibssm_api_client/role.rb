@@ -19,7 +19,7 @@ module IbssmApiClient
     
     def build_role_json_with_names(role_names)
       bucket = Array.new
-      roles_names.each do |role_name|
+      role_names.each do |role_name|
         bucket << ibssm_role_for_coeus_role(role_name)
       end
       bucket.to_json
