@@ -17,6 +17,14 @@ module IbssmApiClient
       bucket.to_json
     end
     
+    def build_role_json_with_names(role_names)
+      bucket = Array.new
+      roles_names.each do |role_name|
+        bucket << ibssm_role_for_coeus_role(role_name)
+      end
+      bucket.to_json
+    end
+    
     def ibssm_role_for_coeus_role(role_name)
       dictionary = {
         'office_staff' => 'g-office_staff',
