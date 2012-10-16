@@ -3,7 +3,7 @@ module IbssmApiClient
     
     def create_staff(token,data)
       path = "users/create"
-      roles = build_roles
+      roles = build_roles(data)
       response = post_data(token,path,{
         'coeus_user_id' => data['id'],
         'first_name' => data['first_name'],
@@ -18,6 +18,7 @@ module IbssmApiClient
     end
     
     def build_roles(data)
+      puts "Adding roles to Symfony: #{data['roles']}"
       role_api = Role.new
       role_api.build_role_json_with_names(data['roles'])
     end
