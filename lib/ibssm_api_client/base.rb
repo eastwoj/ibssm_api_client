@@ -51,6 +51,13 @@ module IbssmApiClient
           req.add_field("X-Request-Token", token)
           req.set_form_data(data)
           
+            puts"IbssmApiClient>> POST: #{url}"
+            puts "token: #{token}"
+            puts "data:"
+            data.each do |k,v|
+              puts "key: #{k}  value: #{v}"
+            end
+          
 
             IbssmApiClient.logger.debug "IbssmApiClient>> POST: #{url}"
             IbssmApiClient.logger.debug "token: #{token}"
@@ -58,6 +65,8 @@ module IbssmApiClient
             data.each do |k,v|
               IbssmApiClient.logger.debug "key: #{k}  value: #{v}"
             end
+            
+            puts req
 
           res = Net::HTTP.new(url.host, url.port).start do |http|
             http.request(req)
