@@ -19,12 +19,13 @@ module IbssmApiClient
       path = "users/create"
       roles = build_roles(data)
       response = post_data(token,path,{
+        'type' => data['type'],
         'coeus_user_id' => data['id'],
+        'type_id' => data['type_id'],
         'first_name' => data['first_name'],
         'last_name' => data['last_name'],
         'email' => data['email'],
         'username' => data['username'],
-        'type' => data['type'],
         'roles' => roles
       })
       debug_response(response)
