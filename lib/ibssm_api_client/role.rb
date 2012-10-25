@@ -42,7 +42,8 @@ module IbssmApiClient
       dictionary = {
         'office_staff' => 'g-office staff',
         'intern' => 'g-intern', 
-        'staff' => 'g-staff',
+        'staff' => 'staff',
+        'staff_pastor' => 'g-staff',
         'student' => 'g-student',
         'admin' => 'g-administrator',
         'root' => 'g-superuser',
@@ -70,11 +71,12 @@ module IbssmApiClient
       dictionary = {
         'g-office staff' => 'office_staff',
         'g-intern' => 'intern', 
-        'g-staff' => 'staff',
+        'g-staff' => 'staff_pastor',
         'g-student' => 'student',
         'g-administrator' => 'admin',
         'g-superuser' => 'root',
         'g-approve_first_year' => '1st_year_approver',
+        'staff' => 'staff',
         'Authenticate Attendance Stations' => 'authenticate_attendance_stations',
         'interview_2nd_year_students' => '1st_year_interviewer',
         'interview_2nd_year_students' => '2nd_year_interviewer', 
