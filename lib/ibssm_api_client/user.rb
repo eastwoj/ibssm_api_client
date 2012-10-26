@@ -32,6 +32,19 @@ module IbssmApiClient
       response         
     end
     
+    def create_student(token,data)
+      path = "students/create"
+      response = post_data(token,path,{
+        'coeus_user_id' => data['coeus_user_id'],
+        'coeus_student_id' => data['coeus_student_id'],
+        'first_name' => data['first_name'],
+        'last_name' => data['last_name'],
+        'email' => data['email']
+      })
+      debug_response(response)
+      response  
+    end
+    
     def build_roles(data)
       puts "Adding roles to Symfony: #{data['roles']}"
       role_api = Role.new
@@ -39,3 +52,4 @@ module IbssmApiClient
     end
   end
 end
+
