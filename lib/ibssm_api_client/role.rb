@@ -4,6 +4,7 @@ module IbssmApiClient
     def update_all_roles(token,user)
       path = "roles/update"
       payload = build_role_json(user.roles)
+      puts "payload: #{payload}"
       response = post_data(token,path,{'coeus_user_id' => user.id, 'roles' => payload})
       debug_response(response)
       response      
@@ -49,7 +50,7 @@ module IbssmApiClient
         'root' => 'g-superuser',
         '1st_year_approver' => 'g-approve_first_year',
         'authenticate_attendance_stations' => 'Authenticate Attendance Stations',
-        '1st_year_interviewer' => '1st_year_interview',
+        '1st_year_interviewer' => 'first_year_interview',
         '2nd_year_interviewer' => 'interview_2nd_year_students', 
         'application_viewer' => 'view_applications',
         'travel_admin' => 'travel_admin',
