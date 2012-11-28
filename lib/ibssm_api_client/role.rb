@@ -79,7 +79,7 @@ module IbssmApiClient
         'g-approve_first_year' => '1st_year_approver',
         'staff' => 'staff',
         'Authenticate Attendance Stations' => 'authenticate_attendance_stations',
-        'interview_2nd_year_students' => '1st_year_interviewer',
+        'first_year_interview' => '1st_year_interviewer',
         'interview_2nd_year_students' => '2nd_year_interviewer', 
         'view_applications' => 'application_viewer',
         'travel_admin' => 'travel_admin',
