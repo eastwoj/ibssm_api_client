@@ -20,8 +20,9 @@ module IbssmApiClient
       roles = build_roles(data)
       response = post_data(token,path,{
         'type' => data['type'],
-        'coeus_user_id' => data['id'],
-        'type_id' => data['type_id'],
+        'coeus_user_id' => data['coeus_user_id'],
+        'coeus_staff_id' => data['coeus_staff_id'],
+        'type_id' => data['type'],
         'first_name' => data['first_name'],
         'last_name' => data['last_name'],
         'email' => data['email'],
