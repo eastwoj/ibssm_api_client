@@ -9,7 +9,8 @@ module IbssmApiClient
         'last_name' => data['last_name'],
         'email' => data['email'],
         'username' => data['username'],
-        'type' => data['type']
+        'type' => data['type'],
+        'type_id' => data['type_id']
       })
       debug_response(response)
       response   
@@ -21,8 +22,7 @@ module IbssmApiClient
       response = post_data(token,path,{
         'type' => data['type'],
         'coeus_user_id' => data['coeus_user_id'],
-        'coeus_staff_id' => data['coeus_staff_id'],
-        'type_id' => data['type'],
+        'type_id' => data['coeus_staff_id'],
         'first_name' => data['first_name'],
         'last_name' => data['last_name'],
         'email' => data['email'],
