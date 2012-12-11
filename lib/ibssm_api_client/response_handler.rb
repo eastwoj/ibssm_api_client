@@ -14,7 +14,7 @@ module IbssmApiClient
         raise IbssmAuthenticationError
       elsif response.code == '404'
         puts body["message"]
-        raise IbssmNotFoundError             
+        raise IbssmResourceNotFoundError             
       end    
     end    
     
