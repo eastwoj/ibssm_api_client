@@ -1,3 +1,0 @@
-class IbssmNotFoundError < StandardError
-
-end
