@@ -1,0 +1,3 @@
+class IbssmResourceNotFoundError < StandardError
+
+end
