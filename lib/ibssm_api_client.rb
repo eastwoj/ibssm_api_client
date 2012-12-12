@@ -15,7 +15,7 @@ require "ibssm_api_client/exceptions/ibssm_api_connection_error"
 require "ibssm_api_client/exceptions/ibssm_api_error"
 require "ibssm_api_client/exceptions/ibssm_api_syntax_error"
 require "ibssm_api_client/exceptions/ibssm_authentication_error"
-require "ibssm_api_client/exceptions/ibssm_not_found_error"
+require "ibssm_api_client/exceptions/ibssm_resource_not_found_error"
 
 
 module IbssmApiClient
